@@ -23,7 +23,7 @@ url: :8011/api/v1/msg/alarm/email/
 
 ### 测试连通性
 ```
-curl http://127.0.0.1:8011/api/v1/msg/alarm/email/ -d "tos=mail@example.com&subject=testsubject&content=testcontent"
+curl http://127.0.0.1:8011/api/v1/msg/alarm/email/ -d "tos=mail@example.com&subject=tsubject&content=tcontent"
 ```
 
 ### 在Open-Falcon的Alarm组件的配置文件里，配置对应地址即可
