@@ -17,4 +17,14 @@ export EMAILPORT=25                  # 端口
 ```./mail-send```
 
 ### 告警邮件API：
-url: /api/v1/msg/alarm/email/
+url: :8011/api/v1/msg/alarm/email/
+
+
+### 在Open-Falcon的Alarm组件的配置文件里，配置对应地址即可
+...
+"api": {
+       ...
+        "mail": "http://127.0.0.1:8011/api/v1/msg/alarm/email/",
+       ...
+    },
+ ...
