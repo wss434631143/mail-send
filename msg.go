@@ -13,15 +13,14 @@ import (
 	"strings"
 )
 
-
 type AlarmEmailBody struct {
-	From     string   `json:"from"`
-	PassWord string   `json:"password"`
-	To       string   `json:"tos"`
-	Subject  string   `json:"subject"`
-	Body     string   `json:"content"`
-	Host     string   `json:"host"`
-	Port     int      `json:"port"`
+	From     string `json:"from"`
+	PassWord string `json:"password"`
+	To       string `json:"tos"`
+	Subject  string `json:"subject"`
+	Body     string `json:"content"`
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
 }
 
 type Error struct {
@@ -80,7 +79,7 @@ func MustString(r *http.Request, key string, displayName ...string) string {
 	if val == "" {
 		name := key
 		if len(displayName) > 0 {
-				name = displayName[0]
+			name = displayName[0]
 		}
 		panic(BadRequestError(fmt.Sprintf("%s is necessary", name)))
 	}
@@ -95,8 +94,8 @@ func AlarmEMailSend(context AlarmEmailBody) {
 	m.SetHeader("Subject", context.Subject)
 	m.SetBody("text/plain", context.Body)
 	d := gomail.NewDialer(context.Host, context.Port, context.From, context.PassWord)
-        if err := d.DialAndSend(m); err != nil {
-            log.Print(err)
+	if err := d.DialAndSend(m); err != nil {
+		log.Print(err)
 	}
 }
 
