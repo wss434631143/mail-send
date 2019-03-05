@@ -2,7 +2,7 @@
 本服务用于Open-falcon发送告警邮件
 
 ### 运行
-1. 配置环境变量
+1. 配置环境变量: .bashrc
 ```
 export EMAILUSER=mail@example.com    # 发送方邮件用户
 export EMAILPASSWORD=123456          # 发送方邮件密码
