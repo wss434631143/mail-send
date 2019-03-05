@@ -95,8 +95,9 @@ func AlarmEMailSend(context AlarmEmailBody) {
 	m.SetHeader("Subject", context.Subject)
 	m.SetBody("text/plain", context.Body)
 	d := gomail.NewDialer(context.Host, context.Port, context.From, context.PassWord)
-	err := d.DialAndSend(m)
-	log.Print(err)
+        if err := d.DialAndSend(m); err != nil {
+            log.Print(err)
+	}
 }
 
 //接受发送告警邮件请求
@@ -106,6 +107,7 @@ func AlarmEMailHandler(w http.ResponseWriter, r *http.Request) {
 		tos := MustString(r, "tos")
 		subject := MustString(r, "subject")
 		content := MustString(r, "content")
+                log.Printf("tos: %s", tos)
 		body, _ := ioutil.ReadAll(r.Body)
 		log.Printf("accept from %s", r.RemoteAddr)
 		port, _ := strconv.Atoi(EmailPort)
